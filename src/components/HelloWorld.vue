@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-defineProps<{ msg: string }>()
-
 const count = ref(0)
+
+defineProps<{ msg: string }>()
 </script>
 
 <template>
@@ -32,6 +32,9 @@ const count = ref(0)
     >.
   </p>
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <RouterLink to="/home">HOME</RouterLink>
+  <RouterLink to="/login">LOGIN</RouterLink>
+  <RouterView />
 </template>
 
 <style scoped>
