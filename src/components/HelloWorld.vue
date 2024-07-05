@@ -32,13 +32,8 @@ defineProps<{ msg: string }>()
     >.
   </p>
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
-  <RouterLink to="/home">HOME</RouterLink>
+  <RouterLink to="/home" class="px-3">HOME</RouterLink>
   <RouterLink to="/login">LOGIN</RouterLink>
   <RouterView />
 </template>
 
-<style scoped>
-.read-the-docs {
-  color: #888;
-}
-</style>
