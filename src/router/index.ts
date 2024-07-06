@@ -6,18 +6,21 @@ import { store } from '@/store'
 import Layout from '@/layout/Layout.vue'
 import Login from '@/pages/Login.vue'
 import Home from '@/pages/Home.vue'
+import History from '@/pages/History.vue'
 import { App } from 'vue'
 
 const routes: RouteRecordRaw[] = [
-  { path: '/login/:pathMatch(.*)*', component: Login, props: { auth: false } },
+  { path: '/login/:pathMatch(.*)*', component: Login, meta: { auth: false } },
   {
     path: '/',
     component: Layout,
+    redirect: '/home',
     children: [
       { path: 'home', component: Home },
+      { path: 'history', component: History }
     ]
   },
-  { path: '/:pathMatch(.*)*', component: Login, props: { auth: false } },
+  { path: '/:pathMatch(.*)*', component: Login, meta: { auth: false } },
 ]
 
 const router = createRouter({
@@ -27,7 +30,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const isLogin = store.state.auth.isLogin
-  const requireAuth = to?.matched?.[0].props?.default?.auth ?? true
+  const requireAuth = to?.matched?.[0].props?.auth ?? true
   const isLoginPage = to.path === '/login'
 
   if (requireAuth && isLogin) { next() }

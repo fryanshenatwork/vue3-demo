@@ -1,10 +1,14 @@
 <script lang="ts" setup>
-import { HomeOutlined } from '@ant-design/icons-vue';
+import { Layout } from 'ant-design-vue'
+import Sidebar from './Sidebar.vue'
+
 </script>
 
 <template>
-  <div>
-    <HomeOutlined />
-    <RouterView />
-  </div>
+  <Layout class="min-h-full bg-[#edf7ff]">
+    <Sidebar />
+    <Layout.Content class="pl-0 pr-2 h-full min-h-full">
+      <RouterView />
+    </Layout.Content>
+  </Layout>
 </template>
