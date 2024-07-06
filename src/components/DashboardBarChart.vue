@@ -10,25 +10,16 @@ import {
   LinearScale
 } from 'chart.js'
 import { Bar } from 'vue-chartjs'
-import * as chartConfig from './chartConfig.js'
+import dayjs from 'dayjs'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
+const today = dayjs()
 const data = {
-  labels: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
+  labels: Array(12).fill('').map((e, ei) => {
+    const date = today.clone().subtract((11 - ei), 'month')
+    return date.format('MM.YY')
+  }),
   datasets: [
     {
       label: 'Balance',

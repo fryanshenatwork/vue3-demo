@@ -12,6 +12,7 @@
     "@ant-design/icons-vue": "^7.0.1",
     "ant-design-vue": "4.2.3",
     "chart.js": "^4.4.3",
+    "dayjs": "^1.11.11",
     "vitawind": "^2.3.0",
     "vue": "^3.4.29",
     "vue-chartjs": "^5.3.1",

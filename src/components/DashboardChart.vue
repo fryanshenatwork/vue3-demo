@@ -13,14 +13,15 @@ import {
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
 import randomNumber from '@/utils/randomNumber'
+import dayjs from 'dayjs'
 
 const dataSet = ref(30)
 
-const today = new Date() as number
+const today = dayjs()
 const chartData = computed(() => ({
   labels: Array(dataSet.value).fill('').map((e, ei) => {
-    const stamp = new Date(today - (1000 * 60 * 60 * 24 * (dataSet.value-ei)))
-    return stamp.getMonth() + 1 + '/' + stamp.getDate()
+    const stamp = today.clone().subtract((dataSet.value - 1) - ei, 'days')
+    return stamp.format('MM / DD')
   }),
   datasets: [
     {

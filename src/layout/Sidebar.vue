@@ -3,7 +3,8 @@ import { Layout, Menu, SubMenu, Popconfirm } from 'ant-design-vue'
 import {
   DashboardOutlined,
   LogoutOutlined,
-  QuestionCircleFilled
+  QuestionCircleFilled,
+  HistoryOutlined
 } from '@ant-design/icons-vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
@@ -35,7 +36,10 @@ const logout = () => {
         </RouterLink>
       </Menu.Item>
       <Menu.Item key="2">
-        <span>Option 2</span>
+        <RouterLink to="/history">
+          <HistoryOutlined style="font-size: 2em" />
+          <span>History</span>
+        </RouterLink>
       </Menu.Item>
       <SubMenu key="sub1">
         <template #title>
