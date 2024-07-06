@@ -40,25 +40,6 @@ const logout = () => {
           <span>History</span>
         </RouterLink>
       </Menu.Item>
-      <SubMenu key="sub1">
-        <template #title>
-          <span>
-            <span>User</span>
-          </span>
-        </template>
-        <Menu.Item key="3">Tom</Menu.Item>
-        <Menu.Item key="4">Bill</Menu.Item>
-        <Menu.Item key="5">Alex</Menu.Item>
-      </SubMenu>
-      <SubMenu key="sub2">
-        <template #title>
-          <span>
-            <span>Team</span>
-          </span>
-        </template>
-        <Menu.Item key="6">Team 1</Menu.Item>
-        <Menu.Item key="8">Team 2</Menu.Item>
-      </SubMenu>
       <Popconfirm
         title="Are you sure you want to logout?"
         ok-text="Logout"

@@ -8,7 +8,7 @@ import {
 } from '@ant-design/icons-vue'
 import randomNumber from '@/utils/randomNumber'
 
-const cardStyle = 'card basis-1/5 py-5'
+const cardStyle = 'card basis-1/5 py-5 hover:bg-fuchsia-100 transition'
 const iconStyle = 'block text-[5em] text-fuchsia-700 pt-2 pb-3'
 const spanInfoStyle = 'block text-center text-xs font-bold'
 const spanAmountStyle = 'text-[2em] block text-center font-extrabold'
@@ -63,7 +63,7 @@ onBeforeUnmount(() => {
       <InsuranceOutlined :class="iconStyle" />
       <span :class="spanInfoStyle">Investment & Insurance</span>
     </div>
-    <div :class="cardStyle + ' basis-2/5 bg-fuchsia-700'">
+    <div :class="cardStyle + ' basis-2/5 bg-fuchsia-700 hover:bg-fuchsia-600 transition'">
       <div class="flex h-full justify-center items-center gap-10">
         <div>
           <MoneyCollectOutlined :class="iconStyle + ' text-white'" />
