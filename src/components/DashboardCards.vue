@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, ref, onBeforeUnmount } from 'vue'
 import {
   CreditCardOutlined,
   TransactionOutlined,
@@ -9,7 +10,7 @@ import randomNumber from '@/utils/randomNumber'
 
 const cardStyle = 'card basis-1/5 py-5'
 const iconStyle = 'block text-[5em] text-fuchsia-700 pt-2 pb-3'
-const spanInfoStyle = 'block text-center'
+const spanInfoStyle = 'block text-center text-xs font-bold'
 const spanAmountStyle = 'text-[2em] block text-center font-extrabold'
 
 const randomNumberGenerator = () => {
@@ -18,12 +19,31 @@ const randomNumberGenerator = () => {
     maximumFractionDigits: 2,
   })
 }
-const randNumber = [
-  randomNumberGenerator(),
-  randomNumberGenerator(),
-  randomNumberGenerator(),
-  randomNumberGenerator()
-]
+
+const randNumber = ref([0, 0, 0, 0])
+const generateRandomNumber = () => {
+  randNumber.value = [
+    randomNumberGenerator(),
+    randomNumberGenerator(),
+    randomNumberGenerator(),
+    randomNumberGenerator()
+  ]
+}
+const timerRef = ref(null)
+
+onMounted(() => {
+  generateRandomNumber()
+  timerRef.value = setInterval(() => {
+    generateRandomNumber()
+  }, 3000);
+})
+
+onBeforeUnmount(() => {
+  if (timerRef) {
+    clearInterval(timerRef.value)
+  }
+})
+
 </script>
 
 <template>
@@ -31,7 +51,7 @@ const randNumber = [
     <div :class="cardStyle">
       <span :class="spanAmountStyle">${{randNumber[0]}}</span>
       <CreditCardOutlined :class="iconStyle" />
-      <span :class="spanInfoStyle">Shopping Debit and Debit Card</span>
+      <span :class="spanInfoStyle">Shopping Debit</span>
     </div>
     <div :class="cardStyle">
       <span :class="spanAmountStyle">${{randNumber[1]}}</span>

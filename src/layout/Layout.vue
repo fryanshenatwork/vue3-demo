@@ -7,7 +7,7 @@ import Sidebar from './Sidebar.vue'
 <template>
   <Layout class="min-h-full bg-[#edf7ff]">
     <Sidebar />
-    <Layout.Content class="pl-0 pr-2 h-full min-h-full">
+    <Layout.Content class="px-3 h-full min-h-full overflow-auto">
       <RouterView />
     </Layout.Content>
   </Layout>

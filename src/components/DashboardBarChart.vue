@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue'
+import { defineProps, ref, onBeforeMount, onBeforeUnmount, computed } from 'vue'
 import {
   Chart as ChartJS,
   Title,
@@ -11,19 +11,22 @@ import {
 } from 'chart.js'
 import { Bar } from 'vue-chartjs'
 import dayjs from 'dayjs'
+import randomNumber from '@/utils/randomNumber'
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend)
+
+const dataSet = ref<number[]>([])
 
 const today = dayjs()
-const data = {
-  labels: Array(12).fill('').map((e, ei) => {
+const data = computed(() => ({
+  labels: Array(12).fill('').map((_, ei) => {
     const date = today.clone().subtract((11 - ei), 'month')
     return date.format('MM.YY')
   }),
   datasets: [
     {
       label: 'Balance',
-      data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
+      data: dataSet.value,
       borderRadius: 10,
       borderSkipped: false,
       borderColor: 'rgba(162, 28, 175, .5)',
@@ -32,7 +35,7 @@ const data = {
     }
   ],
   borderColor: 'red'
-}
+}))
 
 const options = {
   responsive: true,
@@ -42,7 +45,7 @@ const options = {
       grid: {display:false}
     },
     y: {
-      grid:{display:false}
+      grid:{display:true}
     }
   },
   plugins: {
@@ -50,6 +53,22 @@ const options = {
   }
 }
 
+const timerRef = ref<null | NodeJS.Timeout>(null)
+
+const updateDataSet = () => {
+  dataSet.value = Array(12).fill(0).map(_ => randomNumber())
+}
+
+onBeforeMount(() => {
+  updateDataSet()
+  timerRef.value = setInterval(updateDataSet, 3000)
+})
+
+onBeforeUnmount(() => {
+  if (timerRef.value) {
+    clearInterval(timerRef.value)
+  }
+})
 
 defineProps<{className: string}>()
 </script>

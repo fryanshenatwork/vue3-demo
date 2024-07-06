@@ -19,14 +19,14 @@ const fetchData = async () => {
   fetching.value = true
   dataList.value = []
   const data = await fetchHistory()
-  .then(ea => ea.users.map(e => ({
-    id: e.id,
-    image: e.image,
-    name: e.lastName + ' ' + e.firstName,
-    cardNumber: e?.bank?.cardNumber,
-    amount: e.weight,
-    currency: e?.bank?.currency
-  })))
+    .then(ea => ea.users.map(e => ({
+      id: e.id,
+      image: e.image,
+      name: e.lastName + ' ' + e.firstName,
+      cardNumber: e?.bank?.cardNumber,
+      amount: e.weight,
+      currency: e?.bank?.currency
+    })))
   dataList.value = data
   fetching.value = false
 }

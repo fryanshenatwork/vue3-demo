@@ -25,10 +25,9 @@ const logout = () => {
   <Layout.Sider
     v-model:collapsed="collapsed"
     collapsible
-    class="sidebar sider"
   >
     <div class="logo" />
-    <Menu v-model:selectedKeys="selectedKeys.value" theme="light" mode="inline">
+    <Menu v-model:selectedKeys="selectedKeys.value" theme="dark" mode="inline">
       <Menu.Item>
         <RouterLink to="/home">
           <DashboardOutlined style="font-size: 2em" />
@@ -77,7 +76,7 @@ const logout = () => {
 </template>
 
 <style>
-.sidebar.sider {
+/* .sidebar.sider {
   background: transparent;
   padding: .5rem;
   transition: .3s ease;
@@ -99,6 +98,6 @@ const logout = () => {
 }
 .sidebar.sider:not(.ant-layout-sider-collapsed) .ant-layout-sider-trigger{
   width: 185px !important;
-}
+} */
 
 </style>
