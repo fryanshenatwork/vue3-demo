@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { Input, Button } from 'ant-design-vue'
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
-import { ref, reactive } from 'vue';
+import { ref, reactive } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 interface ILoginInfo {
   username: string
@@ -15,6 +17,8 @@ const loginInfo: ILoginInfo = reactive({
 
 const timer = ref<NodeJS.Timeout | null>(null)
 const submitting = ref<boolean>(false)
+const store = useStore()
+const router = useRouter()
 
 const onFormSubmit = () => {
   if (submitting.value) { return }
@@ -22,10 +26,10 @@ const onFormSubmit = () => {
   submitting.value = true
   timer.value = setTimeout(() => {
     submitting.value = false
-  }, 5000)
-  console.log(loginInfo)
+    store.dispatch('login', loginInfo.username)
+    router.push('/')
+  }, 500)
 }
-
 </script>
 
 <template>

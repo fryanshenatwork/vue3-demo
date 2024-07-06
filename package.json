@@ -13,7 +13,8 @@
     "ant-design-vue": "4.2.3",
     "vitawind": "^2.3.0",
     "vue": "^3.4.29",
-    "vue-router": "4"
+    "vue-router": "4",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
