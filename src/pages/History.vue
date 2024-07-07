@@ -70,7 +70,7 @@ const columns =  [
   <div class="my-2 h-full">
     <span class="text-[2.3em] block pb-2">Transcation History</span>
     <div class="card h-auto mb-2">
-      <div class="flex justify-between">
+      <div class="flex justify-between flex-wrap">
         <div>
           <span>Range of Data: </span>
           <RangePicker
@@ -89,7 +89,7 @@ const columns =  [
       </div>
     </div>
 
-    <div class="card h-auto">
+    <div class="card h-auto overflow-y-auto">
       <Table :data-source="dataList" :columns="columns">
         <template #bodyCell="{ column, record }">
           <template v-if="column.key === 'name'">
